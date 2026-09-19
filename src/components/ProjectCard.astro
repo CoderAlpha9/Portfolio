@@ -1,0 +1,25 @@
+---
+import type { Project } from "@/lib/types";
+import TagList from "./TagList.astro";
+import ResourceLinks from "./ResourceLinks.astro";
+import MediaBlock from "./MediaBlock.astro";
+interface Props { project: Project }
+const { project } = Astro.props;
+---
+<article class="project-card" data-categories={project.categories.join("|")}>
+  <MediaBlock image={project.image} className="project-card-media" />
+  <div class="project-card-body">
+    <div class="card-topline">
+      <span>{project.period}</span>
+      <span>{project.categories[0]}</span>
+    </div>
+    <h3><a href={`/projects/${project.slug}/`}>{project.title}</a></h3>
+    <p>{project.summary}</p>
+    {project.outcome && <p class="outcome">{project.outcome}</p>}
+    <TagList items={project.technologies.slice(0, 5)} />
+    <div class="card-actions">
+      <a class="text-link" href={`/projects/${project.slug}/`}>View project</a>
+      <ResourceLinks links={project.links} />
+    </div>
+  </div>
+</article>

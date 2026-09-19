@@ -1,0 +1,59 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import TimelineEntry from "@/components/TimelineEntry.astro";
+import { experience } from "@/data/experience";
+
+const professional = experience.filter((item) => item.type === "Professional");
+const pors = experience.filter((item) => item.type === "POR");
+const campus = experience.filter((item) => item.type === "Campus");
+---
+<BaseLayout
+  title="Experience | Jaiwanth Karthi"
+  description="Professional experience and positions of responsibility across AI, software and technical projects."
+>
+  <PageHero
+    eyebrow="Experience"
+    title="Professional work first, technical leadership next."
+    intro="Internships and research roles are separated from campus positions so the page stays clear for recruiters while still showing the work behind each responsibility."
+  />
+
+  <section class="section shell">
+    <div class="section-heading">
+      <p class="eyebrow">01</p>
+      <h2>Professional experience</h2>
+      <p>Internships and professional research work across AI, full-stack development and quantitative research.</p>
+    </div>
+    <div class="timeline">
+      {professional.map((item) => <TimelineEntry item={item} />)}
+    </div>
+  </section>
+
+  <section class="section shell">
+    <div class="section-heading">
+      <p class="eyebrow">02</p>
+      <h2>Positions of responsibility</h2>
+      <p>Technical leadership, project ownership and club responsibilities at IIT Madras.</p>
+    </div>
+    <div class="timeline">
+      {pors.map((item) => <TimelineEntry item={item} />)}
+    </div>
+  </section>
+
+  <section class="section shell compact-section">
+    <div class="section-heading">
+      <p class="eyebrow">03</p>
+      <h2>Additional campus involvement</h2>
+    </div>
+    <div class="campus-grid">
+      {campus.map((item) => (
+        <article class="campus-card">
+          <span>{item.period}</span>
+          <h3>{item.title}</h3>
+          <p class="kicker">{item.organisation}</p>
+          <p>{item.description[0]}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import { projects } from "@/data/projects";
+
+const sortedProjects = [...projects].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
+const filters = ["All", "AI / ML", "Deep Learning", "Software Systems", "Data Analytics", "Full Stack", "Quantitative", "Engineering"];
+---
+<BaseLayout
+  title="Projects | Jaiwanth Karthi"
+  description="Projects across AI, machine learning, deep learning, software systems, data analytics and full-stack development."
+>
+  <PageHero
+    eyebrow="Projects"
+    title="The portfolio is broad, but the priority is clear."
+    intro="AI and machine learning lead the page. Software systems, data analytics and full-stack work follow, with quantitative and engineering projects kept as supporting evidence of range."
+  />
+
+  <section class="section shell projects-section">
+    <div class="filter-bar" aria-label="Project filters">
+      {filters.map((filter, index) => (
+        <button class:list={["filter-button", { active: index === 0 }]} type="button" data-filter={filter}>
+          {filter}
+        </button>
+      ))}
+    </div>
+
+    <div class="project-grid" data-project-grid>
+      {sortedProjects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </section>
+
+  <script>
+    const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-filter]"));
+    const cards = Array.from(document.querySelectorAll<HTMLElement>("[data-categories]"));
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter ?? "All";
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+
+        cards.forEach((card) => {
+          const categories = (card.dataset.categories || "").split("|");
+          const visible = filter === "All" || categories.includes(filter);
+          card.toggleAttribute("hidden", !visible);
+        });
+      });
+    });
+  </script>
+</BaseLayout>

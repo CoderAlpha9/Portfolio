@@ -1,0 +1,18 @@
+---
+import type { LinkItem } from "@/lib/types";
+interface Props {
+  links?: LinkItem[];
+}
+const { links = [] } = Astro.props;
+---
+{
+  links.length > 0 && (
+    <div class="resource-links">
+      {links.map((link) => (
+        <a href={link.url} target="_blank" rel="noreferrer">
+          {link.label}<span aria-hidden="true"> ↗</span>
+        </a>
+      ))}
+    </div>
+  )
+}

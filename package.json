@@ -1,0 +1,20 @@
+{
+  "name": "jaiwanth-karthi-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "check": "astro check",
+    "preview": "astro preview",
+    "sync:linkedin": "node scripts/import-linkedin.mjs"
+  },
+  "dependencies": {
+    "astro": "^5.13.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.2"
+  }
+}

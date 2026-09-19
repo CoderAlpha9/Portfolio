@@ -1,0 +1,18 @@
+---
+import type { Achievement } from "@/lib/types";
+import ResourceLinks from "./ResourceLinks.astro";
+import MediaBlock from "./MediaBlock.astro";
+interface Props { item: Achievement }
+const { item } = Astro.props;
+---
+<article class="achievement-card">
+  <div class="card-topline">
+    <span>{item.date}</span>
+    <span>{item.issuer}</span>
+  </div>
+  <h3>{item.title}</h3>
+  {item.highlight && <p class="achievement-highlight">{item.highlight}</p>}
+  <p>{item.description}</p>
+  <MediaBlock image={item.image} />
+  <ResourceLinks links={item.links} />
+</article>

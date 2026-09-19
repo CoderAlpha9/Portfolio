@@ -1,8 +1,10 @@
 node_modules/
-dist/
-.astro/
 .DS_Store
+Thumbs.db
 .env
 .env.*
-linkedin-export/
+private/
 *.zip
+*.pdf
+__pycache__/
+.sites-runtime/

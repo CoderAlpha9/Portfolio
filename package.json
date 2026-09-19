@@ -1,20 +1,13 @@
 {
-  "name": "jaiwanth-karthi-portfolio",
-  "private": true,
+  "name": "jaiwanth-portfolio",
   "version": "1.0.0",
+  "private": true,
   "type": "module",
+  "description": "Jaiwanth Karthi's static professional portfolio",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro check && astro build",
-    "check": "astro check",
-    "preview": "astro preview",
-    "sync:linkedin": "node scripts/import-linkedin.mjs"
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/check.mjs"
   },
-  "dependencies": {
-    "astro": "^5.13.7"
-  },
-  "devDependencies": {
-    "@astrojs/check": "^0.9.4",
-    "typescript": "^5.9.2"
-  }
+  "engines": { "node": ">=20" }
 }

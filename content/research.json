@@ -1,0 +1,9 @@
+{
+  "patents": [
+    { "title": "Ensemble architecture for dynamic sign language recognition", "status": "Patent work in progress", "description": "Architecture work associated with Gesturize and Team Sahaay, focused on recognising dynamic gestures.", "project": "gesturize" },
+    { "title": "Neuromuscular orthosis", "status": "Patent work in progress", "description": "Mechanical design work from a course project on stance and gait support.", "project": "orthosis" },
+    { "title": "Space rover landing mechanism", "status": "Patent work in progress", "description": "Mechanical design work on a multistage rover landing mechanism.", "project": "rover" }
+  ],
+  "publications": [],
+  "articles": []
+}

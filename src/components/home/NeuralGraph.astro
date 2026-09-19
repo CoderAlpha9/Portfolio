@@ -1,0 +1,127 @@
+<div class="neural-widget" data-neural-widget>
+  <div class="neural-head">
+    <span>Interactive system map</span>
+    <strong data-neural-title>Machine Learning</strong>
+  </div>
+
+  <svg viewBox="0 0 560 420" role="img" aria-labelledby="neural-title neural-desc">
+    <title id="neural-title">Interactive AI systems map</title>
+    <desc id="neural-desc">
+      Hover or focus a node to reveal how Jaiwanth's interests connect across machine learning,
+      software systems, data, deep learning, full stack development and quantitative research.
+    </desc>
+
+    <g class="edges">
+      <line data-edge="data-ml" x1="78" y1="210" x2="260" y2="180" />
+      <line data-edge="dl-ml" x1="260" y1="70" x2="260" y2="180" />
+      <line data-edge="ml-systems" x1="260" y1="180" x2="455" y2="135" />
+      <line data-edge="ml-fullstack" x1="260" y1="180" x2="440" y2="286" />
+      <line data-edge="data-fullstack" x1="78" y1="210" x2="440" y2="286" />
+      <line data-edge="data-quant" x1="78" y1="210" x2="225" y2="345" />
+      <line data-edge="systems-fullstack" x1="455" y1="135" x2="440" y2="286" />
+      <line data-edge="ml-quant" x1="260" y1="180" x2="225" y2="345" />
+    </g>
+
+    <g class="nodes">
+      <g class="node" data-node="dl" tabindex="0" role="button" aria-label="Deep Learning">
+        <circle cx="260" cy="70" r="24" />
+        <text x="260" y="74" text-anchor="middle">DL</text>
+      </g>
+      <g class="node primary" data-node="ml" tabindex="0" role="button" aria-label="Machine Learning">
+        <circle cx="260" cy="180" r="32" />
+        <text x="260" y="184" text-anchor="middle">ML</text>
+      </g>
+      <g class="node" data-node="data" tabindex="0" role="button" aria-label="Data Analytics">
+        <circle cx="78" cy="210" r="24" />
+        <text x="78" y="214" text-anchor="middle">DA</text>
+      </g>
+      <g class="node" data-node="systems" tabindex="0" role="button" aria-label="Software Systems">
+        <circle cx="455" cy="135" r="27" />
+        <text x="455" y="139" text-anchor="middle">SYS</text>
+      </g>
+      <g class="node" data-node="fullstack" tabindex="0" role="button" aria-label="Full Stack">
+        <circle cx="440" cy="286" r="24" />
+        <text x="440" y="290" text-anchor="middle">FS</text>
+      </g>
+      <g class="node subtle" data-node="quant" tabindex="0" role="button" aria-label="Quantitative Research">
+        <circle cx="225" cy="345" r="21" />
+        <text x="225" y="349" text-anchor="middle">Q</text>
+      </g>
+    </g>
+  </svg>
+
+  <p class="neural-detail" data-neural-detail>
+    Models, data and engineering choices designed to work together in real systems.
+  </p>
+</div>
+
+<script>
+  const widget = document.querySelector<HTMLElement>("[data-neural-widget]");
+  if (widget) {
+    const title = widget.querySelector<HTMLElement>("[data-neural-title]");
+    const detail = widget.querySelector<HTMLElement>("[data-neural-detail]");
+    const nodes = Array.from(widget.querySelectorAll<SVGGElement>("[data-node]"));
+    const edges = Array.from(widget.querySelectorAll<SVGLineElement>("[data-edge]"));
+
+    if (!title || !detail) throw new Error("Neural widget labels are missing.");
+
+    const content: Record<string, { title: string; detail: string; edges: string[] }> = {
+      dl: {
+        title: "Deep Learning",
+        detail: "Temporal models, computer vision, sequence learning and representation learning.",
+        edges: ["dl-ml"]
+      },
+      ml: {
+        title: "Machine Learning",
+        detail: "The centre of the portfolio: adaptive models, evaluation, inference and applied AI.",
+        edges: ["data-ml", "dl-ml", "ml-systems", "ml-fullstack", "ml-quant"]
+      },
+      data: {
+        title: "Data Analytics",
+        detail: "Pipelines, structured data, experimentation and decision-oriented analysis.",
+        edges: ["data-ml", "data-fullstack", "data-quant"]
+      },
+      systems: {
+        title: "Software Systems",
+        detail: "Compilers, APIs, performance-aware software and infrastructure around models.",
+        edges: ["ml-systems", "systems-fullstack"]
+      },
+      fullstack: {
+        title: "Full Stack",
+        detail: "Interfaces, services and product flows that turn models into usable applications.",
+        edges: ["ml-fullstack", "data-fullstack", "systems-fullstack"]
+      },
+      quant: {
+        title: "Quantitative Research",
+        detail: "A supporting discipline for probabilistic thinking, experimentation and model evaluation.",
+        edges: ["data-quant", "ml-quant"]
+      }
+    };
+
+    function activate(key?: string) {
+      const item = key ? content[key] : undefined;
+      if (!item) return;
+      title!.textContent = item.title;
+      detail!.textContent = item.detail;
+
+      nodes.forEach((node) => node.classList.toggle("active", node.dataset.node === key));
+      edges.forEach((edge) => edge.classList.toggle("active", item.edges.includes(edge.dataset.edge ?? "")));
+    }
+
+    function reset() {
+      title!.textContent = "Machine Learning";
+      detail!.textContent = "Models, data and engineering choices designed to work together in real systems.";
+      nodes.forEach((node) => node.classList.remove("active"));
+      edges.forEach((edge) => edge.classList.remove("active"));
+    }
+
+    nodes.forEach((node) => {
+      node.addEventListener("mouseenter", () => activate(node.dataset.node));
+      node.addEventListener("focus", () => activate(node.dataset.node));
+      node.addEventListener("click", () => activate(node.dataset.node));
+      node.addEventListener("blur", reset);
+    });
+
+    widget.addEventListener("mouseleave", reset);
+  }
+</script>

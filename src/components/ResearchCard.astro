@@ -1,0 +1,18 @@
+---
+import type { ResearchItem } from "@/lib/types";
+import ResourceLinks from "./ResourceLinks.astro";
+import MediaBlock from "./MediaBlock.astro";
+interface Props { item: ResearchItem }
+const { item } = Astro.props;
+---
+<article class="research-card">
+  <div class="card-topline">
+    <span>{item.date}</span>
+    <span>{item.status}</span>
+  </div>
+  <h3>{item.title}</h3>
+  <p>{item.description}</p>
+  {item.contributors && <p class="muted">{item.contributors}</p>}
+  <MediaBlock image={item.image} />
+  <ResourceLinks links={item.links} />
+</article>

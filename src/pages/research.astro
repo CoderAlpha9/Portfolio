@@ -1,0 +1,58 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import ResearchCard from "@/components/ResearchCard.astro";
+import { researchItems } from "@/data/research";
+
+const patents = researchItems.filter((item) => item.kind === "Patent");
+const publications = researchItems.filter((item) => item.kind === "Publication");
+const articles = researchItems.filter((item) => item.kind === "Article");
+---
+<BaseLayout
+  title="Research & Writing | Jaiwanth Karthi"
+  description="Patents, publications and technical writing by Jaiwanth Karthi."
+>
+  <PageHero
+    eyebrow="Research & Writing"
+    title="Formal work, separated by type."
+    intro="Patent work, publications and longer technical articles live here. Empty sections stay quiet rather than filling the page with placeholders."
+  />
+
+  <section class="section shell">
+    <div class="section-heading">
+      <p class="eyebrow">01</p>
+      <h2>Patents</h2>
+    </div>
+    <div class="research-grid">
+      {patents.map((item) => <ResearchCard item={item} />)}
+    </div>
+  </section>
+
+  <section class="section shell compact-section">
+    <div class="section-heading">
+      <p class="eyebrow">02</p>
+      <h2>Publications</h2>
+    </div>
+    {
+      publications.length > 0 ? (
+        <div class="research-grid">{publications.map((item) => <ResearchCard item={item} />)}</div>
+      ) : (
+        <p class="empty-note">No public research publication is listed here yet.</p>
+      )
+    }
+  </section>
+
+  <section class="section shell compact-section">
+    <div class="section-heading">
+      <p class="eyebrow">03</p>
+      <h2>Articles</h2>
+    </div>
+    {
+      articles.length > 0 ? (
+        <div class="research-grid">{articles.map((item) => <ResearchCard item={item} />)}</div>
+      ) : (
+        <p class="empty-note">Long-form articles will be added here when they are published. Shorter technical updates remain under Posts.</p>
+      )
+    }
+  </section>
+</BaseLayout>

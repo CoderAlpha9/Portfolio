@@ -1,0 +1,38 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import PageHero from "@/components/PageHero.astro";
+import AchievementCard from "@/components/AchievementCard.astro";
+import { achievements } from "@/data/achievements";
+
+const groups = [
+  { key: "Major", title: "Major achievements", intro: "Selected competition, technical and institute-level recognition." },
+  { key: "Academic", title: "Academic recognition", intro: "Academic awards presented without marks or grade information." },
+  { key: "Certification", title: "Certifications", intro: "Selected formal learning and programming certifications." }
+] as const;
+---
+<BaseLayout
+  title="Achievements | Jaiwanth Karthi"
+  description="Selected achievements, academic recognition and certifications."
+>
+  <PageHero
+    eyebrow="Achievements"
+    title="Recognition that adds context to the work."
+    intro="A curated record of competitions, awards and certifications. The strongest technical achievements appear first."
+  />
+
+  {groups.map((group) => {
+    const items = achievements.filter((item) => item.group === group.key);
+    return (
+      <section class="section shell">
+        <div class="section-heading">
+          <p class="eyebrow">{String(items.length).padStart(2, "0")}</p>
+          <h2>{group.title}</h2>
+          <p>{group.intro}</p>
+        </div>
+        <div class="achievement-grid">
+          {items.map((item) => <AchievementCard item={item} />)}
+        </div>
+      </section>
+    );
+  })}
+</BaseLayout>

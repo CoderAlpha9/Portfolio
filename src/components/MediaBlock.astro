@@ -1,5 +1,6 @@
 ---
 import type { MediaItem } from "@/lib/types";
+import { withBase } from "@/lib/paths";
 interface Props {
   image?: MediaItem;
   className?: string;
@@ -9,7 +10,7 @@ const { image, className = "" } = Astro.props;
 {
   image && (
     <figure class:list={["media-block", className]}>
-      <img src={image.src} alt={image.alt} loading="lazy" />
+      <img src={withBase(image.src)} alt={image.alt} loading="lazy" />
       {image.caption && <figcaption>{image.caption}</figcaption>}
     </figure>
   )

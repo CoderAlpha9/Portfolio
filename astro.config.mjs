@@ -1,7 +1,9 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: process.env.SITE_URL || "https://coderalpha9.github.io",
+  site: "https://coderalpha9.github.io",
+  base: "/Portfolio",
   output: "static",
+  outDir: "./docs",
   trailingSlash: "always"
 });

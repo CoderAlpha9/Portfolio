@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/lib/paths";
 ---
 <BaseLayout title="Page not found | Jaiwanth Karthi">
   <section class="page-hero shell not-found">
     <p class="eyebrow">404</p>
     <h1>This page is not here.</h1>
     <p class="page-intro">The link may have moved. The main portfolio pages are available from the navigation.</p>
-    <a class="button primary" href="/">Return home</a>
+    <a class="button primary" href={withBase("/")}>Return home</a>
   </section>
 </BaseLayout>

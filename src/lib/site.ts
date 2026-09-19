@@ -1,3 +1,5 @@
+import { withBase } from "./paths";
+
 export const navItems = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about/" },
@@ -8,7 +10,12 @@ export const navItems = [
   { label: "Posts", href: "/posts/" }
 ];
 
+export function navHref(href: string) {
+  return withBase(href);
+}
+
 export function isActivePath(currentPath: string, href: string) {
-  if (href === "/") return currentPath === "/";
-  return currentPath.startsWith(href);
+  const resolved = navHref(href);
+  if (href === "/") return currentPath === resolved || currentPath === resolved.replace(/\/$/, "");
+  return currentPath.startsWith(resolved);
 }

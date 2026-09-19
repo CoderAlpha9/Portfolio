@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
+import { withBase } from "@/lib/paths";
 import TagList from "@/components/TagList.astro";
 import ResourceLinks from "@/components/ResourceLinks.astro";
 import MediaBlock from "@/components/MediaBlock.astro";
@@ -26,7 +27,7 @@ const related = projects
   description={project.summary}
 >
   <section class="project-detail-hero shell">
-    <a class="back-link" href="/projects/">← Projects</a>
+    <a class="back-link" href={withBase("/projects/")}>← Projects</a>
     <p class="eyebrow">{project.categories.join(" · ")}</p>
     <h1>{project.title}</h1>
     <p class="project-detail-summary">{project.summary}</p>

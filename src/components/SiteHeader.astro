@@ -1,11 +1,11 @@
 ---
-import { navItems, isActivePath } from "@/lib/site";
+import { navItems, navHref, isActivePath } from "@/lib/site";
 import { profile } from "@/data/profile";
 const currentPath = Astro.url.pathname;
 ---
 <header class="site-header">
   <div class="shell header-inner">
-    <a class="brand" href="/" aria-label="Jaiwanth Karthi home">
+    <a class="brand" href={navHref("/")} aria-label="Jaiwanth Karthi home">
       <span class="brand-mark">{profile.shortName}</span>
       <span class="brand-name">{profile.name}</span>
     </a>
@@ -18,7 +18,7 @@ const currentPath = Astro.url.pathname;
       {
         navItems.map((item) => (
           <a
-            href={item.href}
+            href={navHref(item.href)}
             class:list={["nav-link", { active: isActivePath(currentPath, item.href) }]}
           >
             {item.label}

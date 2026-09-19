@@ -1,54 +1,103 @@
 # Jaiwanth Karthi Portfolio
 
-A static portfolio built with Astro and TypeScript. It is designed for GitHub Pages and keeps all public content in a small set of typed data files.
+Static Astro portfolio configured specifically for the GitHub repository:
 
-## Design goals
+```text
+Portfolio
+```
 
-- AI, ML and deep learning first
-- Software systems, data analytics and full stack work next
-- Quantitative research as a supporting area
-- Calm dark green visual system
-- One interaction-led visual on the homepage
-- Separate pages for About, Achievements, Experience, Projects, Research & Writing, and Posts
-- Optional media and links with no empty placeholders
-- No backend or database
+and the GitHub Pages project URL:
 
-## Run locally
+```text
+https://coderalpha9.github.io/Portfolio/
+```
+
+The site is built into the `docs/` folder so GitHub Pages can publish it directly from the `main` branch. No GitHub Actions workflow is required.
+
+## Local development
+
+Install dependencies once:
 
 ```bash
 npm install
+```
+
+Run the development server:
+
+```bash
 npm run dev
 ```
 
-Astro will print a local URL, usually `http://localhost:4321`.
+Because this repository is configured with the `/Portfolio/` base path, Astro will serve the project under that path locally.
 
-## Build
+## Build the deployable site
+
+Run:
 
 ```bash
 npm run build
 ```
 
-The static site is generated in `dist/`.
-
-## Publish with GitHub Pages
-
-The cleanest setup is a repository named:
+Astro writes the complete static site to:
 
 ```text
-CoderAlpha9.github.io
+docs/
 ```
 
-Push the repository to the `main` branch. In GitHub, open:
+Commit both the source files and the generated `docs/` folder.
 
-`Settings -> Pages -> Build and deployment -> Source -> GitHub Actions`
+## GitHub Pages setup without workflows
 
-The included workflow will build and deploy the site.
+Open the `Portfolio` repository on GitHub.
 
-If your GitHub username or repository arrangement changes, update `site` in `astro.config.mjs` or set the `SITE_URL` environment variable.
+Go to:
+
+```text
+Settings -> Pages
+```
+
+Under `Build and deployment` choose:
+
+```text
+Source: Deploy from a branch
+Branch: main
+Folder: /docs
+```
+
+Click `Save`.
+
+GitHub will publish:
+
+```text
+https://coderalpha9.github.io/Portfolio/
+```
+
+Whenever you change the website:
+
+```bash
+npm run build
+git add .
+git commit -m "Update portfolio"
+git push
+```
+
+GitHub Pages will serve the newly committed `docs/` output.
+
+## Important
+
+Do not select `/ (root)` as the Pages folder for this Astro source repository. The source files are not directly browser-ready. Use `/docs`, which contains the built static HTML, CSS and JavaScript.
+
+The file:
+
+```text
+public/.nojekyll
+```
+
+is copied into `docs/` during each build so GitHub Pages serves Astro's `_astro` asset directory correctly.
 
 ## Edit content
 
-Most content lives in:
+Most public content is in:
 
 ```text
 src/data/profile.ts
@@ -59,79 +108,32 @@ src/data/research.ts
 src/data/posts.ts
 ```
 
-The UI automatically hides optional images, links, contact fields, and sections when their values are missing.
+Optional images are stored under `public/media/`.
 
-### Add your email or phone
+No image placeholder is rendered when an item has no image.
 
-Open `src/data/profile.ts` and set the relevant values in `contacts`.
+## Contact fields
 
-Empty values are intentionally not rendered.
-
-### Add an image
-
-Put the file under:
+Email and phone are intentionally blank until you add verified values in:
 
 ```text
-public/media/
+src/data/profile.ts
 ```
 
-Then add:
+The site automatically hides empty contact fields.
 
-```ts
-image: {
-  src: "/media/example.webp",
-  alt: "Useful description of the image"
-}
-```
+## LinkedIn update helper
 
-Cards without an image remain fully styled and do not render a placeholder.
-
-### Add links
-
-Content items use a generic link array:
-
-```ts
-links: [
-  { label: "GitHub", url: "https://github.com/..." },
-  { label: "Certificate", url: "https://..." }
-]
-```
-
-Add only links that are useful to a recruiter or technical reviewer.
-
-## LinkedIn import helper
-
-A conservative import helper is included for future profile updates:
+You can stage selected information from an extracted LinkedIn data export with:
 
 ```bash
 npm run sync:linkedin -- /path/to/extracted-linkedin-export
 ```
 
-The script reads only an allowlist of professional profile files if they exist and writes a private staging summary to:
+The script writes private staging data under:
 
 ```text
-linkedin-export/normalized.json
+linkedin-export/
 ```
 
-That directory is ignored by Git. The importer never publishes data automatically. Review changes and copy only the information you want into the typed data files.
-
-This is deliberate. It keeps the public portfolio curated and prevents a raw account export from being committed.
-
-## Project structure
-
-```text
-src/
-  components/
-  data/
-  layouts/
-  lib/
-  pages/
-  styles/
-public/
-  media/
-.github/
-  workflows/
-scripts/
-```
-
-The site is intentionally small. It does not use a CMS, backend, database, animation library, or component framework.
+That folder is ignored by Git. Nothing is published automatically.

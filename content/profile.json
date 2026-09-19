@@ -1,0 +1,34 @@
+{
+  "name": "Jaiwanth Karthi",
+  "fullName": "Jaiwanth Karthi M K",
+  "institution": "IIT Madras",
+  "degree": "Dual Degree in Engineering Design",
+  "educationPeriod": "2024 - 2029",
+  "location": "Chennai, India",
+  "intro": "I work on machine learning models and the software around them, from sign language recognition to neural network optimisation.",
+  "about": [
+    "I am pursuing a Dual Degree in Engineering Design at IIT Madras. My work centres on AI and machine learning, with a particular interest in how models become useful, reliable software.",
+    "At Sahaay, I develop deep learning models for Gesturize, a sign language recognition project. I also lead NanoCompile, where our team is working on compiler and inference optimisations for trained neural networks.",
+    "My experience spans NLP pipelines at Genstrive, full-stack development at HardJunc, and independent projects in conversational AI, graphics, and simulation. Quantitative research is a complementary interest, through my work with WorldQuant BRAIN."
+  ],
+  "links": [
+    { "label": "LinkedIn", "url": "https://www.linkedin.com/in/jaiwanth-karthi/" },
+    { "label": "GitHub", "url": "https://github.com/CoderAlpha9" }
+  ],
+  "skills": [
+    { "title": "Machine learning", "items": ["PyTorch", "TensorFlow", "scikit-learn", "Computer vision", "Sequence modelling", "OpenCV", "MediaPipe"] },
+    { "title": "AI systems", "items": ["LangChain", "LangGraph", "Retrieval-augmented generation", "Conversational agents", "NLP", "ONNX Runtime"] },
+    { "title": "Software & data", "items": ["Python", "C", "C++", "SQL", "NumPy", "pandas", "Docker", "Git"] },
+    { "title": "Product development", "items": ["TypeScript", "React Native", "FastAPI", "HTML & CSS", "Supabase", "Figma"] }
+  ],
+  "education": [
+    { "title": "Dual Degree in Engineering Design", "organisation": "Indian Institute of Technology Madras", "period": "2024 - 2029", "description": "Coursework includes Machine Learning Techniques and Introduction to Computation and Visualisation." },
+    { "title": "Cambridge AS & A Levels", "organisation": "Velammal Global School, Puzhal", "period": "Completed 2024", "description": "Physics, chemistry, mathematics, and information technology." },
+    { "title": "Cambridge IGCSE", "organisation": "Velammal Global School, Puzhal", "period": "Completed 2022", "description": "Secondary education." }
+  ],
+  "certifications": [
+    { "title": "Machine Learning Specialisation", "organisation": "Stanford University / DeepLearning.AI", "period": "September 2025", "description": "Supervised learning, advanced learning algorithms, unsupervised learning, recommenders, and reinforcement learning." },
+    { "title": "SQL Programmer", "organisation": "HackerRank", "period": "August 2025" },
+    { "title": "Python Programmer", "organisation": "HackerRank", "period": "July 2025" }
+  ]
+}

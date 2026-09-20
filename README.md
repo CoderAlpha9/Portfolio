@@ -48,8 +48,6 @@ The page hierarchy uses editorial serif headings and system sans-serif body text
 
 All substantive content is available without JavaScript. Navigation and interactive controls support keyboard use, and the neural illustration also supports touch. Reduced-motion preferences are respected. Pages include a skip link, descriptive image text, semantic headings, responsive layouts, canonical metadata, and a print stylesheet.
 
-The neural diagram is a fixed-weight illustration, not a trained model, performance chart, or demonstration of a portfolio project's output. It updates only during interaction and has no continuous animation loop.
-
 ## LinkedIn updates
 
 There is no automatic scraping or unauthorised LinkedIn synchronisation. To import new posts, export your own LinkedIn data and preview the `Shares.csv` file with:

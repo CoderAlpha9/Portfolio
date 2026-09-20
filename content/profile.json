@@ -5,10 +5,10 @@
   "degree": "Dual Degree in Engineering Design",
   "educationPeriod": "2024 - 2029",
   "location": "Chennai, India",
-  "intro": "I work on machine learning models and the software around them, from sign language recognition to neural network optimisation.",
+  "intro": "I work on machine learning models and the software around them, from few shot learning to neural network DAG optimisation.",
   "about": [
     "I am pursuing a Dual Degree in Engineering Design at IIT Madras. My work centres on AI and machine learning, with a particular interest in how models become useful, reliable software.",
-    "At Sahaay, I develop deep learning models for Gesturize, a sign language recognition project. I also lead NanoCompile, where our team is working on compiler and inference optimisations for trained neural networks.",
+    "Working on the intersection of AI and real world data, I develop DL and ML architectures for novel use cases, and the systems behind it. I also lead NanoCompile, where our team is working on compiler and inference optimisations for trained neural networks.",
     "My experience spans NLP pipelines at Genstrive, full-stack development at HardJunc, and independent projects in conversational AI, graphics, and simulation. Quantitative research is a complementary interest, through my work with WorldQuant BRAIN."
   ],
   "links": [
